@@ -14,6 +14,6 @@ def catppuccin():
             ]
     backgroundColor = "#1e1e2e"
     foregroundColor = "#cdd6f4"
-    workspaceColor = "#94e2d5"
+    workspaceColor = "#fab387"
     foregroundColorTwo = "#bac2de"
     return colors, backgroundColor, foregroundColor, workspaceColor, foregroundColorTwo

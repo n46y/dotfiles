@@ -100,22 +100,32 @@ keys = [
     Key([mod, "shift"], "v", lazy.spawn(text_editor), desc = "Launch neovim")
 ]
 
-groups = [Group(i) for i in "123456789"]
+groups = [
+        Group("ORG"),
+        Group("DEV"),
+        Group("STDY"),
+        Group("WWW"),
+        Group("CHAT"),
+        Group("GAME"),
+        Group("7"),
+        Group("8"),
+        Group("9"),
+          ]
 
-for i in groups:
+for num, i in enumerate(groups):
     keys.extend(
         [
             # mod1 + letter of group = switch to group
             Key(
                 [mod],
-                i.name,
+                str(num + 1),
                 lazy.group[i.name].toscreen(),
                 desc="Switch to group {}".format(i.name),
             ),
             # mod1 + shift + letter of group = switch to & move focused window to group
             Key(
                 [mod, "shift"],
-                i.name,
+                str(num + 1),
                 lazy.window.togroup(i.name, switch_group=True),
                 desc="Switch to & move focused window to group {}".format(i.name),
             ),
@@ -155,10 +165,12 @@ screens = [
             [
                 widget.GroupBox(
                     padding = 4,
-                    active = colors[4],
+                    block_highlight_text_color = colors[0],
                     inactive = colors[1],
-                    highlight_color = [backgroundColor, workspaceColor],
-                    highlight_method = "line"),
+                    highlight_method = "block",
+                    this_screen_border = colors[4],
+                    this_current_screen_border = colors[4],
+                    visible_groups= ["ORG", "DEV", "STDY", "WWW", "CHAT", "GAME"]),
                 widget.Prompt(),
                 widget.WindowName(),
                 widget.Chord(
@@ -174,7 +186,7 @@ screens = [
                     padding = 8
                     ),
                 widget.Memory(
-                    foreground = colors[4],
+                    foreground = colors[9],
                     fmt = '  {}',
                     padding = 8
 					),
@@ -191,8 +203,8 @@ screens = [
                     length_pomodori = 50,
                     ),
                 widget.Clock(format=' %a, %d. %m. %Y. |  %I:%M %p',
-					foreground = colors[2],
-                    background = backgroundColor,
+					foreground = colors[0],
+                    background = colors[4],
 					padding = 8
 					),
 				widget.QuickExit(
@@ -202,10 +214,9 @@ screens = [
 					),
             ],
             24,
+            background = colors[0]
             # border_width=[2, 0, 2, 0],  # Draw top and bottom borders
             # border_color=["ff00ff", "000000", "ff00ff", "000000"]  # Borders are magenta
-            wallpaper= "~/wallpapers/mandelbrot_gap_blue.png",
-            wallpaper_mode = "stretch"
         ),
     ),
 ]
