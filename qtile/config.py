@@ -167,12 +167,6 @@ screens = [
                     },
                     name_transform=lambda name: name.upper(),
                 ),
-                widget.Net(
-                    interface = "wlp4s0",
-                    format = ' {down} ↓↑ {up}',
-                    foreground = colors[7],
-                    padding = 8
-                    ),
                 widget.CPU(
                     format = '  {freq_current}GHz {load_percent}%',
                     mouse_callbacks = {'Button1': lambda: qtile.cmd_spawn(terminal + ' -e htop')},
@@ -186,6 +180,15 @@ screens = [
 					),
                 widget.Systray(
                     padding = 8
+                    ),
+                widget.Pomodoro(
+                    background = colors[0],
+                    color_inactive = colors[3],
+                    color_active = colors[9],
+                    color_break = colors[5],
+                    length_long_break = 10,
+                    length_short_break = 10,
+                    length_pomodori = 50,
                     ),
                 widget.Clock(format=' %a, %d. %m. %Y. |  %I:%M %p',
 					foreground = colors[2],
