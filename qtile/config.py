@@ -137,7 +137,7 @@ for num, i in enumerate(groups):
     )
 
 layouts = [
-    layout.MonadTall(border_focus = colors[6], border_normal = colors[0], border_width=4, margin = 8),
+    layout.Columns(border_focus = colors[6], border_normal = colors[0], border_width=4, margin = 8),
     layout.Max(),
     # Try more layouts by unleashing below layouts.
     # layout.Stack(num_stacks=2),
