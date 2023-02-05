@@ -1,4 +1,4 @@
 #!/bin/bash
 
 picom -b &
-nitrogen --restore
+nitrogen --set-zoom-fill --random /home/n46y/wallpapers/
