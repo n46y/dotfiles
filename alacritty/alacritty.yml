@@ -7,3 +7,13 @@ import:
 
 window:
   opacity: 0.95
+
+# Font configuration (changes require restart)
+font:
+  # copy fonts to ~/.local/share/fonts (linux)
+  # copy fonts to ~/Library/Fonts (mac)
+  normal:
+    # family: "JetbrainsMono Nerd Font"
+    # family: "SauceCodePro Nerd Font"
+    family: "JetbrainsMono Nerd Font"
+  size: 10
