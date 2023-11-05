@@ -46,7 +46,7 @@ import colors
 mod = "mod4"
 mod1 = "mod1"
 terminal = "alacritty"
-browser = "firefox"
+browser = "librewolf"
 text_editor = terminal + " nvim"
 file_launcher = "rofi -show run"
 audio = "pavucontrol"

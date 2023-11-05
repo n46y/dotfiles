@@ -4,12 +4,12 @@
 - picom
 - alacritty
 - rofi
-- firefox
 - python-psutil
 - nitrogen
 - pavucontrol
 - ttf-jetbrains-mono-nerd
 - [yay](https://github.com/Jguer/yay)
+- librewolf-bin
 - tmux
 - [tpm](https://github.com/tmux-plugins/tpm)
 - neovim
