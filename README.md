@@ -39,8 +39,3 @@ After getting every package you need to:
     tmux source ~/.config/tmux/tmux.conf
     ```
     Then: `Ctrl+<space> I`
-- copy everything from the neovim folder to the right place
-    ```
-    cp -r ~/.config/neovim/custom/* ~/.config/nvim/lua/custom/
-    ```
-    Then open neovim and follow the instructions
