@@ -14,6 +14,7 @@
 - [tpm](https://github.com/tmux-plugins/tpm)
 - neovim
 - [nvchad](https://nvchad.com/docs/quickstart/install)
+- stow
 
 ## Setup
 After getting every package you need to:
@@ -22,10 +23,10 @@ After getting every package you need to:
     ssh-keygen -t rsa
     cat ~/.ssh/id_rsa.pub
     ```
-- clone the repo and move everything to .config
+- clone the repo and stow everything to .config
     ```
     git clone git@github.com:n46y/dotfiles
-    cp -r dotfiles/* ~/.config/
+    cd dotfiles && stow .
     ```
 - reload qtile with `Ctrl+sup+r`
 - create a wallpapers folder in home and fill it up
