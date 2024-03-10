@@ -75,3 +75,8 @@ lspconfig.clangd.setup {
     "--offset-encoding=utf-16",
   },
 }
+
+lspconfig.hls.setup {
+    on_attach = on_attach,
+    capabilities = capabilities
+}

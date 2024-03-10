@@ -78,7 +78,8 @@ local plugins = {
 
        -- other
         "latex",
-        "python"
+        "python",
+        "haskell"
 
       },
     },
