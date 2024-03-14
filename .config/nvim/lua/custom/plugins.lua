@@ -1,3 +1,4 @@
+local overrides = require "custom.configs.overrides"
 local plugins = {
   {
     "rcarriga/nvim-dap-ui",
@@ -93,6 +94,15 @@ local plugins = {
         "codelldb",
       }
     }
-  }
+  },
+    {
+  "zbirenbaum/copilot.lua",
+  cmd = "Copilot",
+  build = ":Copilot auth",
+        event = "InsertEnter",
+        opts = overrides.copilot,
+    },
 }
 return plugins
+
+
