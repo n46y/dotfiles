@@ -1,0 +1,46 @@
+[opener]
+edit = [
+  # editor
+  { run = 'nvim "$@"', block = true, for = "unix" },
+  { run = 'code "$@"', block = true, for = "unix" },
+]
+extract = [
+  # extract
+  { run = 'unar "$1"', desc = "Extract here", for = "unix" },
+]
+
+open = [
+  # system app
+  { run = 'xdg-open "$@"', desc = "Open", for = "linux" },
+]
+
+play = [
+  # media
+  { run = 'vlc "$@"', orphan = true, for = "unix" },
+]
+
+[open]
+rules = [
+  # rules for open file
+  { name = "*/", use = ["edit", "open"] },
+
+  { mime = "text/*", use = ["edit"] },
+  { mime = "image/*", use = ["open"] },
+  { mime = "video/*", use = ["play"] },
+  { mime = "audio/*", use = ["play"] },
+  { mime = "inode/x-empty", use = ["edit"] },
+
+  { mime = "application/json", use = ["edit"] },
+  { mime = "*/javascript", use = ["edit"] },
+
+  { mime = "application/zip", use = ["extract"] },
+  { mime = "application/gzip", use = ["extract"] },
+  { mime = "application/x-tar", use = ["extract"] },
+  { mime = "application/x-bzip", use = ["extract"] },
+  { mime = "application/x-bzip2", use = ["extract"] },
+  { mime = "application/x-7z-compressed", use = ["extract"] },
+  { mime = "application/x-rar", use = ["extract"] },
+  { mime = "application/xz", use = ["extract"] },
+
+  { mime = "*", use = ["open"] },
+]

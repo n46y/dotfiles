@@ -13,6 +13,8 @@
 - tmux
 - [tpm](https://github.com/tmux-plugins/tpm)
 - neovim
+- rigrep
+- yazi (zoxide, vlc, evince, ...)
 - [nvchad](https://nvchad.com/docs/quickstart/install)
 - stow
 
