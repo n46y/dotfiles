@@ -15,7 +15,6 @@
 - neovim
 - rigrep
 - yazi (zoxide, vlc, evince, ...)
-- [nvchad](https://nvchad.com/docs/quickstart/install)
 - stow
 
 ## Setup
