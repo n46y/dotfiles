@@ -30,7 +30,7 @@ import socket
 import subprocess
 from libqtile import hook
 from libqtile import qtile
-from typing import List  
+from typing import List
 from libqtile import bar, layout, widget
 from libqtile.config import Click, Drag, Group, Key, Match, Screen, ScratchPad, DropDown
 from libqtile.lazy import lazy
@@ -100,22 +100,22 @@ keys = [
     Key([mod, "control"], "r", lazy.reload_config(), desc="Reload the config"),
     Key([mod, "control"], "q", lazy.shutdown(), desc="Shutdown Qtile"),
     Key([mod], "r", lazy.spawncmd(), desc="Spawn a command using a prompt widget"),
-    Key([mod], "b", lazy.spawn(browser), desc = "Launch browser"),
-    Key([mod], "p", lazy.spawn(file_launcher), desc = "Launch dmenu"),
-    Key([mod], "v", lazy.spawn(audio), desc = "Launch pavucontrol")
+    Key([mod], "b", lazy.spawn(browser), desc="Launch browser"),
+    Key([mod], "p", lazy.spawn(file_launcher), desc="Launch dmenu"),
+    Key([mod], "v", lazy.spawn(audio), desc="Launch pavucontrol")
 ]
 
 groups = [
-        Group("ORG"),
-        Group("DEV"),
-        Group("STDY"),
-        Group("WWW"),
-        Group("COMM"),
-        Group("STRM"),
-        Group("7"),
-        Group("8"),
-        Group("9"),
-          ]
+    Group("ORG"),
+    Group("DEV"),
+    Group("STDY"),
+    Group("WWW"),
+    Group("COMM"),
+    Group("STRM"),
+    Group("7"),
+    Group("8"),
+    Group("9"),
+]
 
 for num, i in enumerate(groups):
     keys.extend(
@@ -142,7 +142,7 @@ for num, i in enumerate(groups):
     )
 
 layouts = [
-    layout.Columns(border_focus = colors[6], border_normal = colors[0], border_width=4, margin = 8),
+    layout.Columns(border_focus=colors[6], border_normal=colors[0], border_width=4, margin=8),
     layout.Max(),
     # Try more layouts by unleashing below layouts.
     # layout.Stack(num_stacks=2),
@@ -166,17 +166,17 @@ extension_defaults = widget_defaults.copy()
 
 screens = [
     Screen(
-        top =bar.Bar(
+        top=bar.Bar(
             [
                 widget.GroupBox(
-                    padding = 4,
-                    block_highlight_text_color = colors[0],
-                    inactive = colors[1],
-                    active = colors[6],
-                    highlight_method = "block",
-                    this_screen_border = colors[9],
-                    this_current_screen_border = colors[9],
-                    visible_groups= ["ORG", "DEV", "STDY", "WWW", "COMM", "STRM"]),
+                    padding=4,
+                    block_highlight_text_color=colors[0],
+                    inactive=colors[1],
+                    active=colors[6],
+                    highlight_method="block",
+                    this_screen_border=colors[9],
+                    this_current_screen_border=colors[9],
+                    visible_groups=["ORG", "DEV", "STDY", "WWW", "COMM", "STRM"]),
                 widget.Prompt(),
                 widget.WindowName(),
                 widget.Chord(
@@ -186,41 +186,41 @@ screens = [
                     name_transform=lambda name: name.upper(),
                 ),
                 widget.CPU(
-                    format = '  {freq_current}GHz {load_percent}%',
-                    mouse_callbacks = {'Button1': lambda: qtile.cmd_spawn(terminal + ' -e htop')},
-                    foreground = colors[10],
-                    padding = 8
-                    ),
+                    format='  {freq_current}GHz {load_percent}%',
+                    mouse_callbacks={'Button1': lambda: qtile.cmd_spawn(terminal + ' -e htop')},
+                    foreground=colors[10],
+                    padding=8
+                ),
                 widget.Memory(
-                    foreground = colors[9],
-                    fmt = '  {}',
-                    padding = 8
-					),
+                    foreground=colors[9],
+                    fmt='  {}',
+                    padding=8
+                ),
                 widget.Systray(
-                    padding = 8
-                    ),
+                    padding=8
+                ),
                 widget.Pomodoro(
-                    background = colors[0],
-                    color_inactive = colors[3],
-                    color_active = colors[9],
-                    color_break = colors[5],
-                    length_long_break = 10,
-                    length_short_break = 10,
-                    length_pomodori = 50,
-                    ),
+                    background=colors[0],
+                    color_inactive=colors[3],
+                    color_active=colors[9],
+                    color_break=colors[5],
+                    length_long_break=8,
+                    length_short_break=8,
+                    length_pomodori=40,
+                ),
                 widget.Clock(format=' %a, %d. %m. %Y. |  %I:%M %p',
-					foreground = colors[0],
-                    background = colors[4],
-					padding = 8
-					),
-				widget.QuickExit(
-					fmt = ' ',
-					foreground = colors[9],
-					padding = 8
-					),
+                             foreground=colors[0],
+                             background=colors[4],
+                             padding=8
+                             ),
+                widget.QuickExit(
+                    fmt=' ',
+                    foreground=colors[9],
+                    padding=8
+                ),
             ],
             24,
-            background = colors[0]
+            background=colors[0]
             # border_width=[2, 0, 2, 0],  # Draw top and bottom borders
             # border_color=["ff00ff", "000000", "ff00ff", "000000"]  # Borders are magenta
         ),
