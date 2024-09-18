@@ -535,6 +535,8 @@ require('lazy').setup({
             },
           },
         },
+        hls = {},
+        texlab = {},
       }
 
       -- Ensure the servers and tools above are installed
@@ -601,6 +603,7 @@ require('lazy').setup({
         golang = { 'gofmt' },
         scala = { 'sclafmt' },
         cpp = { 'clang-format' },
+        haskell = { 'ormolu' },
       },
     },
   },
@@ -732,13 +735,25 @@ require('lazy').setup({
       -- Load the colorscheme here.
       -- Like many other themes, this one has different styles, and you could load
       -- any other, such as 'tokyonight-storm', 'tokyonight-moon', or 'tokyonight-day'.
-      vim.cmd.colorscheme 'catppuccin-mocha'
+      vim.cmd.colorscheme 'rose-pine'
+      vim.o.background = 'dark'
       vim.keymap.set('n', '<leader>wt', '<cmd>Telescope colorscheme<CR>', { desc = '[W]orkspace [T]heme' })
+      vim.keymap.set('n', '<leader>wl', '<cmd>:set background=light<CR>', { desc = '[W]orkspace [L]ightmode' })
+      vim.keymap.set('n', '<leader>wd', '<cmd>:set background=dark<CR>', { desc = '[W]orkspace [D]arkmode' })
       -- You can configure highlights by doing something like:
       -- vim.cmd.hi 'Comment gui=none'
     end,
   },
-
+  { 'rose-pine/neovim', name = 'rose-pine' },
+  {
+    'briones-gabriel/darcula-solid.nvim',
+    dependencies = { 'rktjmp/lush.nvim' },
+    priority = 1000,
+  },
+  {
+    'slugbyte/lackluster.nvim',
+    priority = 1000,
+  },
   -- Highlight todo, notes, etc in comments
   { 'folke/todo-comments.nvim', event = 'VimEnter', dependencies = { 'nvim-lua/plenary.nvim' }, opts = { signs = false } },
 
@@ -798,6 +813,7 @@ require('lazy').setup({
         'query',
         'rust',
         'scala',
+        'latex',
         'vim',
         'vimdoc',
       },
