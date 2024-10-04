@@ -50,6 +50,7 @@ browser = "librewolf"
 text_editor = terminal + " nvim"
 file_launcher = "rofi -show run"
 audio = "pavucontrol"
+notes = "obsidian"
 
 catppuccin = colors.catppuccin()
 
@@ -102,7 +103,8 @@ keys = [
     Key([mod], "r", lazy.spawncmd(), desc="Spawn a command using a prompt widget"),
     Key([mod], "b", lazy.spawn(browser), desc="Launch browser"),
     Key([mod], "p", lazy.spawn(file_launcher), desc="Launch dmenu"),
-    Key([mod], "v", lazy.spawn(audio), desc="Launch pavucontrol")
+    Key([mod], "v", lazy.spawn(audio), desc="Launch pavucontrol"),
+    Key([mod], "o", lazy.spawn(notes), desc="Launch obsidian")
 ]
 
 groups = [
