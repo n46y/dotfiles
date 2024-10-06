@@ -210,7 +210,7 @@ screens = [
                     length_short_break=8,
                     length_pomodori=40,
                 ),
-                widget.Clock(format=' %a, %d. %m. %Y. |  %I:%M %p',
+                widget.Clock(format='  %a, %d. %m. %Y. |   %I:%M %p',
                              foreground=colors[0],
                              background=colors[4],
                              padding=8
