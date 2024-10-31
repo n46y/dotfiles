@@ -6,7 +6,7 @@ edit = [
 ]
 extract = [
   # extract
-  { run = 'unar "$1"', desc = "Extract here", for = "unix" },
+  { run = 'unzip "$1"', desc = "Extract here", for = "unix" },
 ]
 
 open = [

@@ -1,6 +1,8 @@
 -- Set <space> as the leader key
 -- See `:help mapleader`
 --  NOTE: Must happen before plugins are loaded (otherwise wrong leader will be used)
+vim.o.termguicolors = true
+
 vim.g.mapleader = ' '
 vim.g.maplocalleader = ' '
 
@@ -503,9 +505,6 @@ require('lazy').setup({
           filetypes = { 'rust' },
           root_dir = require('lspconfig').util.root_pattern 'Cargo.toml',
         },
-        tsserver = {
-          filetypes = { 'typescript', 'typescriptreact', 'typescript.tsx' },
-        },
         pylsp = {
           filetypes = { 'python' },
           settings = {
@@ -740,15 +739,14 @@ require('lazy').setup({
       -- Load the colorscheme here.
       -- Like many other themes, this one has different styles, and you could load
       -- any other, such as 'tokyonight-storm', 'tokyonight-moon', or 'tokyonight-day'.
-      vim.cmd.colorscheme 'rose-pine'
-      vim.o.background = 'dark'
+      vim.cmd.colorscheme 'lackluster'
       vim.keymap.set('n', '<leader>wt', '<cmd>Telescope colorscheme<CR>', { desc = '[W]orkspace [T]heme' })
-      vim.keymap.set('n', '<leader>wl', '<cmd>:set background=light<CR>', { desc = '[W]orkspace [L]ightmode' })
-      vim.keymap.set('n', '<leader>wd', '<cmd>:set background=dark<CR>', { desc = '[W]orkspace [D]arkmode' })
+      vim.keymap.set('n', '<leader>ws', '<cmd>TransparentToggle<CR>', { desc = '[W]orkspace Tran[s]parent' })
       -- You can configure highlights by doing something like:
       -- vim.cmd.hi 'Comment gui=none'
     end,
   },
+  { 'xiyaowong/transparent.nvim' },
   { 'rose-pine/neovim', name = 'rose-pine' },
   {
     'briones-gabriel/darcula-solid.nvim',
@@ -756,7 +754,7 @@ require('lazy').setup({
     priority = 1000,
   },
   {
-    'slugbyte/lackluster.nvim',
+    'n46y/laintheme.nvim',
     priority = 1000,
   },
   -- Highlight todo, notes, etc in comments
@@ -814,7 +812,6 @@ require('lazy').setup({
         'html',
         'lua',
         'luadoc',
-        'markdown',
         'query',
         'rust',
         'scala',

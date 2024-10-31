@@ -15,5 +15,5 @@ configuration{
     font: "JetBrainsMono NFM";
 }
 
-@theme "catppuccin-mocha"
+@theme "lain"
 

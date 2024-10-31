@@ -17,5 +17,24 @@ style = "Italic"
 family = "JetBrainsMono NFM"
 style = "Regular"
 
+[env]
+term = "xterm-256color"
+
 [window]
 opacity = 0.9
+
+[colors.primary]
+background = '#000000'
+
+[colors.normal]
+# black is gray0
+black = '#000000'
+red = '#b43453'
+green = '#d2738a'
+yellow = '#e9b6c2'
+blue = '#b43453'
+magenta = '#b43453'
+# cyan is set to lack
+cyan = '#e9b6c2' 
+# white is set to luster
+white = '#aaaaaa'

@@ -47,7 +47,7 @@ mod = "mod4"
 mod1 = "mod1"
 terminal = "alacritty"
 browser = "librewolf"
-text_editor = terminal + " nvim"
+text_editor = "code"
 file_launcher = "rofi -show run"
 audio = "pavucontrol"
 notes = "obsidian"
@@ -56,7 +56,7 @@ catppuccin = colors.catppuccin()
 
 colorscheme = catppuccin
 
-colors, backgroundColor, foregroundColor, workspaceColor, foregroundColorTwo = colorscheme
+colors = colorscheme
 
 keys = [
     # A list of available commands that can be bound to keys can be found
@@ -104,16 +104,17 @@ keys = [
     Key([mod], "b", lazy.spawn(browser), desc="Launch browser"),
     Key([mod], "p", lazy.spawn(file_launcher), desc="Launch dmenu"),
     Key([mod], "v", lazy.spawn(audio), desc="Launch pavucontrol"),
-    Key([mod], "o", lazy.spawn(notes), desc="Launch obsidian")
+    Key([mod], "o", lazy.spawn(notes), desc="Launch obsidian"),
+    Key([mod], "c", lazy.spawn(text_editor), desc="Launch code")
 ]
 
 groups = [
     Group("ORG"),
     Group("DEV"),
-    Group("STDY"),
+    Group("STD"),
     Group("WWW"),
-    Group("COMM"),
-    Group("STRM"),
+    Group("COM"),
+    Group("STR"),
     Group("7"),
     Group("8"),
     Group("9"),
@@ -144,7 +145,7 @@ for num, i in enumerate(groups):
     )
 
 layouts = [
-    layout.Columns(border_focus=colors[6], border_normal=colors[0], border_width=4, margin=8),
+    layout.Columns(border_focus=colors[4], border_normal=colors[0], border_width=3, margin=4),
     layout.Max(),
     # Try more layouts by unleashing below layouts.
     # layout.Stack(num_stacks=2),
@@ -174,11 +175,11 @@ screens = [
                     padding=4,
                     block_highlight_text_color=colors[0],
                     inactive=colors[1],
-                    active=colors[6],
+                    active=colors[4],
                     highlight_method="block",
-                    this_screen_border=colors[9],
-                    this_current_screen_border=colors[9],
-                    visible_groups=["ORG", "DEV", "STDY", "WWW", "COMM", "STRM"]),
+                    this_screen_border=colors[4],
+                    this_current_screen_border=colors[4],
+                    visible_groups=["ORG", "DEV", "STD", "WWW", "COM", "STR"]),
                 widget.Prompt(),
                 widget.WindowName(),
                 widget.Chord(
@@ -190,11 +191,11 @@ screens = [
                 widget.CPU(
                     format='  {freq_current}GHz {load_percent}%',
                     mouse_callbacks={'Button1': lambda: qtile.cmd_spawn(terminal + ' -e htop')},
-                    foreground=colors[10],
+                    foreground=colors[2],
                     padding=8
                 ),
                 widget.Memory(
-                    foreground=colors[9],
+                    foreground=colors[3],
                     fmt='  {}',
                     padding=8
                 ),
@@ -203,9 +204,9 @@ screens = [
                 ),
                 widget.Pomodoro(
                     background=colors[0],
-                    color_inactive=colors[3],
-                    color_active=colors[9],
-                    color_break=colors[5],
+                    color_inactive=colors[4],
+                    color_active=colors[2],
+                    color_break=colors[3],
                     length_long_break=8,
                     length_short_break=8,
                     length_pomodori=40,
@@ -217,7 +218,7 @@ screens = [
                              ),
                 widget.QuickExit(
                     fmt=' ',
-                    foreground=colors[9],
+                    foreground=colors[5],
                     padding=8
                 ),
             ],
