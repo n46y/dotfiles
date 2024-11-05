@@ -566,101 +566,34 @@ require('lazy').setup({
       {
         'j-hui/fidget.nvim',
         opts = {},
-      },
-      {
-        'mfussenegger/nvim-dap',
-        config = function(self, opts)
-          -- Debug settings if you're using nvim-dap
-          local dap = require 'dap'
-
-          dap.configurations.scala = {
-            {
-              type = 'scala',
-              request = 'launch',
-              name = 'RunOrTest',
-              metals = {
-                runType = 'runOrTestFile',
-                --args = { "firstArg", "secondArg", "thirdArg" }, -- here just as an example
-              },
-            },
-            {
-              type = 'scala',
-              request = 'launch',
-              name = 'Test Target',
-              metals = {
-                runType = 'testTarget',
-              },
-            },
-          }
-        end,
-      },
+      }
     },
     ft = { 'scala', 'sbt', 'java' },
-    opts = function()
-      local metals_config = require('metals').bare_config()
+    config = function()
+      local metals = require("metals")
+      local config = metals.bare_config()
 
-      -- Example of settings
-      metals_config.settings = {
+      config.init_options.statusBarProvider = "off"
+      config.settings = {
         showImplicitArguments = true,
-        excludedPackages = { 'akka.actor.typed.javadsl', 'com.github.swagger.akka.javadsl' },
+        excludedPackages = { "akka.actor.typed.javadsl" },
+        serverProperties = { "-Xmx2g" },
+        serverVersion = "latest.snapshot",
       }
 
-      metals_config.init_options.statusBarProvider = 'off'
+      config.capabilities = require("cmp_nvim_lsp").default_capabilities()
 
-      metals_config.capabilities = require('cmp_nvim_lsp').default_capabilities()
-
-      metals_config.on_attach = function(client, bufnr)
-        require('metals').setup_dap()
-
-        local map = vim.keymap.set
-
-        map('n', '<leader>cl', vim.lsp.codelens.run)
-
-        map('n', '[c', function()
-          vim.diagnostic.goto_prev { wrap = false }
-        end)
-
-        map('n', ']c', function()
-          vim.diagnostic.goto_next { wrap = false }
-        end)
-
-        map('n', '<leader>dc', function()
-          require('dap').continue()
-        end)
-
-        map('n', '<leader>dr', function()
-          require('dap').repl.toggle()
-        end)
-
-        map('n', '<leader>dK', function()
-          require('dap.ui.widgets').hover()
-        end)
-
-        map('n', '<leader>dt', function()
-          require('dap').toggle_breakpoint()
-        end)
-
-        map('n', '<leader>dso', function()
-          require('dap').step_over()
-        end)
-
-        map('n', '<leader>dsi', function()
-          require('dap').step_into()
-        end)
-
-        map('n', '<leader>dl', function()
-          require('dap').run_last()
-        end)
+      config.on_attach = function(client, bufnr)
+        -- metals.setup_dap()
+        require("lsp-format").on_attach(client, bufnr)
       end
 
-      return metals_config
-    end,
-    config = function(self, metals_config)
-      local nvim_metals_group = vim.api.nvim_create_augroup('nvim-metals', { clear = true })
-      vim.api.nvim_create_autocmd('FileType', {
-        pattern = self.ft,
+      -- Autocmd that will actually be in charge of starting the whole thing
+      local nvim_metals_group = vim.api.nvim_create_augroup("nvim-metals", { clear = true })
+      vim.api.nvim_create_autocmd("FileType", {
+        pattern = { "scala", "sbt", "java" },
         callback = function()
-          require('metals').initialize_or_attach(metals_config)
+          metals.initialize_or_attach(config)
         end,
         group = nvim_metals_group,
       })
