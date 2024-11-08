@@ -175,7 +175,7 @@ screens = [
                     padding=4,
                     block_highlight_text_color=colors[0],
                     inactive=colors[1],
-                    active=colors[4],
+                    active=colors[5],
                     highlight_method="block",
                     this_screen_border=colors[4],
                     this_current_screen_border=colors[4],
@@ -204,9 +204,9 @@ screens = [
                 ),
                 widget.Pomodoro(
                     background=colors[0],
-                    color_inactive=colors[4],
-                    color_active=colors[2],
-                    color_break=colors[3],
+                    color_inactive=colors[6],
+                    color_active=colors[4],
+                    color_break=colors[5],
                     length_long_break=8,
                     length_short_break=8,
                     length_pomodori=40,
@@ -218,7 +218,7 @@ screens = [
                              ),
                 widget.QuickExit(
                     fmt=' ',
-                    foreground=colors[5],
+                    foreground=colors[6],
                     padding=8
                 ),
             ],

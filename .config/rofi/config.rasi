@@ -15,5 +15,5 @@ configuration{
     font: "JetBrainsMono NFM";
 }
 
-@theme "lain"
+@theme "rose-pine"
 

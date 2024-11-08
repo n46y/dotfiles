@@ -468,20 +468,20 @@ require('lazy').setup({
   -- auto transparent
   { 'xiyaowong/transparent.nvim' },
 
-  {
-    'n46y/laintheme.nvim',
-    priority = 1000,
-    init = function()
-      vim.cmd.colorscheme 'lackluster'
-      vim.keymap.set('n', '<leader>wt', '<cmd>Telescope colorscheme<CR>', { desc = '[W]orkspace [T]heme' })
-      vim.keymap.set('n', '<leader>ws', '<cmd>TransparentToggle<CR>', { desc = '[W]orkspace Tran[s]parent' })
-    end,
-  },
   { -- You can easily change to a different colorscheme.
     'catppuccin/nvim',
     priority = 1000,
   },
-  { 'rose-pine/neovim', name = 'rose-pine' },
+  {
+    'rose-pine/neovim',
+    name = 'rose-pine',
+    priority = 1000,
+    init = function()
+      vim.cmd.colorscheme 'rose-pine'
+      vim.keymap.set('n', '<leader>wt', '<cmd>Telescope colorscheme<CR>', { desc = '[W]orkspace [T]heme' })
+      vim.keymap.set('n', '<leader>wp', '<cmd>TransparentToggle<CR>', { desc = '[W]orkspace Trans[p]arent' })
+    end,
+  },
   {
     'briones-gabriel/darcula-solid.nvim',
     dependencies = { 'rktjmp/lush.nvim' },
@@ -566,32 +566,32 @@ require('lazy').setup({
       {
         'j-hui/fidget.nvim',
         opts = {},
-      }
+      },
     },
     ft = { 'scala', 'sbt', 'java' },
     config = function()
-      local metals = require("metals")
+      local metals = require 'metals'
       local config = metals.bare_config()
 
-      config.init_options.statusBarProvider = "off"
+      config.init_options.statusBarProvider = 'off'
       config.settings = {
         showImplicitArguments = true,
-        excludedPackages = { "akka.actor.typed.javadsl" },
-        serverProperties = { "-Xmx2g" },
-        serverVersion = "latest.snapshot",
+        excludedPackages = { 'akka.actor.typed.javadsl' },
+        serverProperties = { '-Xmx2g' },
+        serverVersion = 'latest.snapshot',
       }
 
-      config.capabilities = require("cmp_nvim_lsp").default_capabilities()
+      config.capabilities = require('cmp_nvim_lsp').default_capabilities()
 
-      config.on_attach = function(client, bufnr)
-        -- metals.setup_dap()
-        require("lsp-format").on_attach(client, bufnr)
-      end
+      -- config.on_attach = function(client, bufnr)
+      -- metals.setup_dap()
+      -- require('lsp-format').on_attach(client, bufnr)
+      -- end
 
       -- Autocmd that will actually be in charge of starting the whole thing
-      local nvim_metals_group = vim.api.nvim_create_augroup("nvim-metals", { clear = true })
-      vim.api.nvim_create_autocmd("FileType", {
-        pattern = { "scala", "sbt", "java" },
+      local nvim_metals_group = vim.api.nvim_create_augroup('nvim-metals', { clear = true })
+      vim.api.nvim_create_autocmd('FileType', {
+        pattern = { 'scala', 'sbt', 'java' },
         callback = function()
           metals.initialize_or_attach(config)
         end,
