@@ -57,7 +57,7 @@ tiling_drag modifier titlebar
 bindsym $mod+Return exec alacritty
 bindsym $mod+p exec rofi -show run
 bindsym $mod+c exec code
-bindsym $mod+b exec firefox
+bindsym $mod+b exec librewolf
 bindsym $mod+Shift+v exec pavucontrol
 
 # kill focused window
